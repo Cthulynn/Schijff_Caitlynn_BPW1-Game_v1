@@ -11,6 +11,8 @@ public class PlayerPickup : MonoBehaviour {
     public GameObject intro2;
     public GameObject poem;
     public GameObject ending;
+    public GameObject pickupSound;
+    public GameObject fusRoDah;
 
     private int count;
     private GameObject currentUI;
@@ -52,6 +54,7 @@ public class PlayerPickup : MonoBehaviour {
             else if (currentUI == ending)
             {
                 ending.SetActive(false);
+                Instantiate(fusRoDah);
             }
             else
             {
@@ -72,6 +75,7 @@ public class PlayerPickup : MonoBehaviour {
             count = count + 1;
             SetCountText();
             TurnOnPanel();
+            Instantiate(pickupSound);
         }
     }
     //dit is de text die in het scherm verschijnt met het aantal verzamelde bloemen
