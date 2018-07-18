@@ -1,11 +1,10 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Rock : MonoBehaviour
 {
-
+    //Bedient hoe hard de rocks gaan vallen
     public float rockfallForce;
 
     private Rigidbody rb;
@@ -17,7 +16,7 @@ public class Rock : MonoBehaviour
     }
 
     public void FallTrigger(float time)
-    {
+    {   //wordt aangeroepen vanuit rockfall
         //Debug.Log("Fall function is called");
         waitTime = time;
         StartCoroutine("Fall");
@@ -25,6 +24,7 @@ public class Rock : MonoBehaviour
 
     private IEnumerator Fall()
     {
+        //wacht op het  juiste moment om de rocks weg te schieten
         yield return new WaitForSeconds(waitTime);
         rb.isKinematic = false;
         float xForce = Random.Range(-rockfallForce, rockfallForce);

@@ -16,12 +16,12 @@ public class Rockfall : MonoBehaviour
     private bool playerIsClose = false;
 
     private void Start()
-    {
+    {   //verzamled alle rocks in een lijst
         //Debug.Log(rockParent.name);
         foreach (Transform rock in rockParent)
         {
             rocks.Add(rock.GetComponent<Rock>());
-            Debug.Log(rock.name);
+            //Debug.Log(rock.name);
         }
         fusRoDah = gameObject.GetComponent<AudioSource>();
     }
@@ -32,7 +32,7 @@ public class Rockfall : MonoBehaviour
         {
             if (Input.GetKey("e"))
             {
-                //shoot away rocks
+                // roept de lijst met rocks aan om rocks weg te schieten,zet pop up uit en geluid aan
                 foreach (Rock rock in rocks)
                 {
                     rock.FallTrigger(delayTime);
@@ -41,11 +41,11 @@ public class Rockfall : MonoBehaviour
                 rocksHaveGone = true;
                 fusRoDah.Play();
                 popupToScream.SetActive(false);
-                Debug.Log("rocks should shoot");
+               // Debug.Log("rocks should shoot");
             }
         }
     }
-
+    //zet panel om te schreeuwen aan als de speler in de buurt is en de rotsen er nog zijn
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -60,7 +60,7 @@ public class Rockfall : MonoBehaviour
         }
 
     }
-
+    //zet panel om te schreeuwen uit als de speler in de buurt is en de rotsen er nog zijn
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")

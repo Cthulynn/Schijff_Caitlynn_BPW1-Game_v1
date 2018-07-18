@@ -5,16 +5,18 @@ using UnityEngine;
 public class Pick : MonoBehaviour
 {
 
-    private AudioSource Audio;
+    private AudioSource audioComponent;
 
     private void Start()
     {
-        Audio = GetComponent<AudioSource>();
+        audioComponent = GetComponent<AudioSource>();
     }
 
     void Update()
+
     {
-        if (!Audio.isPlaying)
+        //Als Audio klaar is, maak het dan kapot
+        if (!audioComponent.isPlaying)
         {
             Destroy(gameObject);
         }
